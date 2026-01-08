@@ -1,0 +1,425 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CASCADE Living OS - Custom Theme */
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    
+    /* CASCADE specific colors */
+    --cascade-sovereign: 16 185 129;
+    --cascade-stable: 6 182 212;
+    --cascade-drifting: 245 158 11;
+    --cascade-critical: 239 68 68;
+    --cascade-foundation: 168 85 247;
+    --cascade-theory: 59 130 246;
+    --cascade-edge: 16 185 129;
+  }
+  
+  * {
+    border-color: rgb(39 39 42);
+  }
+  
+  body {
+    background-color: rgb(9 9 11);
+    color: rgb(244 244 245);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-900;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-600;
+  }
+}
+
+@layer components {
+  /* CASCADE Card Styles */
+  .cascade-card {
+    @apply bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-lg;
+  }
+  
+  .cascade-card-glow {
+    @apply cascade-card shadow-lg shadow-cyan-500/5;
+  }
+  
+  /* Sovereignty Status Pills */
+  .status-sovereign {
+    @apply bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+  
+  .status-stable {
+    @apply bg-cyan-500/10 text-cyan-400 border border-cyan-500/20;
+  }
+  
+  .status-drifting {
+    @apply bg-amber-500/10 text-amber-400 border border-amber-500/20;
+  }
+  
+  .status-critical {
+    @apply bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+  
+  /* Pyramid Layer Colors */
+  .layer-foundation {
+    @apply bg-purple-500/10 text-purple-400 border-purple-500/20;
+  }
+  
+  .layer-theory {
+    @apply bg-blue-500/10 text-blue-400 border-blue-500/20;
+  }
+  
+  .layer-edge {
+    @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
+  }
+  
+  /* Animated gradients */
+  .gradient-cascade {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--cascade-foundation)) 0%,
+      rgb(var(--cascade-theory)) 50%,
+      rgb(var(--cascade-edge)) 100%
+    );
+  }
+  
+  .gradient-sovereignty {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--primary)) 0%,
+      rgb(var(--accent)) 100%
+    );
+  }
+  
+  /* Glow effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgb(6 182 212 / 0.3);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgb(168 85 247 / 0.3);
+  }
+  
+  .glow-emerald {
+    box-shadow: 0 0 20px rgb(16 185 129 / 0.3);
+  }
+  
+  /* Text animations */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400;
+  }
+  
+  /* LAMAGUE symbol styling */
+  .lamague-symbol {
+    @apply font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.5 rounded;
+  }
+  
+  /* Metric display */
+  .metric-value {
+    @apply font-mono text-2xl font-bold tracking-tight;
+  }
+  
+  .metric-label {
+    @apply text-xs uppercase tracking-wider text-zinc-500;
+  }
+  
+  /* Navigation active state */
+  .nav-item-active {
+    @apply bg-zinc-800/50 text-cyan-400 border-l-2 border-cyan-400;
+  }
+  
+  /* Widget containers */
+  .widget {
+    @apply cascade-card p-4 space-y-3;
+  }
+  
+  .widget-header {
+    @apply flex items-center justify-between;
+  }
+  
+  .widget-title {
+    @apply text-sm font-medium text-zinc-400 uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Slide in from right */
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Slide in from left */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Scale in */
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Pulse glow animation */
+  .animate-glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgb(6 182 212 / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px rgb(6 182 212 / 0.4);
+    }
+  }
+  
+  /* Cascade animation */
+  .animate-cascade {
+    animation: cascade 0.5s ease-out;
+  }
+  
+  @keyframes cascade {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Sovereignty meter animation */
+  .animate-sovereignty {
+    animation: sovereigntyPulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes sovereigntyPulse {
+    0%, 100% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.2);
+    }
+  }
+  
+  /* Microorcim fire animation */
+  .animate-microorcim {
+    animation: microorcimFire 0.6s ease-out;
+  }
+  
+  @keyframes microorcimFire {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgb(6 182 212 / 0.7);
+    }
+    50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 20px rgb(6 182 212 / 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgb(6 182 212 / 0);
+    }
+  }
+  
+  /* Breathing animation */
+  .animate-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+  
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+  
+  /* Shimmer loading effect */
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgb(39 39 42 / 0) 0%,
+      rgb(63 63 70 / 0.5) 50%,
+      rgb(39 39 42 / 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Bounce in */
+  .animate-bounce-in {
+    animation: bounceIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Float animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Stagger delay utilities */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-zinc-950;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-zinc-900/50 backdrop-blur-xl;
+  }
+  
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(rgb(24, 24, 27), rgb(24, 24, 27)) padding-box,
+                linear-gradient(135deg, rgb(6, 182, 212), rgb(168, 85, 247)) border-box;
+    border: 1px solid transparent;
+  }
+  
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
